@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="Todolist">
+  
+  	<insert id="insertTodolist" parameterType="todolist">
+  		<![CDATA[
+  			insert into todolist(td_no, td_content) values(#{td_no}, #{td_content})
+  		]]>
+  	</insert>
+  	
+  	<select id="getTodolistList" resultType="todolist">
+  			
+  			select *
+  			from todolist
+  			where 1 = 1
+  			<if test="searchCondition == 'CONTENT'">
+  				and td_content list '%'||#{searchKeyword}||'%'
+  			</if>
+  			order by td_no desc
+  			
+  	</select>
+  	
+  	<select id="getTodolist" resultType="todolist">
+  		<![CDATA[
+  			select * from todolist where td_no = #{td_no}
+  		]]>
+  	</select>
+  	
+  	<update id="updateTodolist">
+  		<![CDATA[
+  			update todolist set td_content = #{td_content} where td_no = #{td_no}
+  		]]>
+  	</update>
+  	
+  	<delete id="deleteTodolist">
+  		<![CDATA[
+  			delete from todolist where td_no = #{td_no}
+  		]]>
+  	</delete>
+  
+  </mapper>
