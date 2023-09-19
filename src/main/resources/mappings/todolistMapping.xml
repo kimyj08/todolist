@@ -7,7 +7,7 @@
   
   	<insert id="insertTodolist" parameterType="todolist">
   		<![CDATA[
-  			insert into todolist(td_no, td_content) values(#{td_no}, #{td_content})
+  			insert into todolist(td_no, td_content) values(td_seq.NEXTVAL, #{td_content})
   		]]>
   	</insert>
   	
@@ -17,7 +17,7 @@
   			from todolist
   			where 1 = 1
   			<if test="searchCondition == 'CONTENT'">
-  				and td_content list '%'||#{searchKeyword}||'%'
+  				and td_content like '%'||#{searchKeyword}||'%'
   			</if>
   			order by td_no desc
   			

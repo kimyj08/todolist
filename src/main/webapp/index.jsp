@@ -15,7 +15,7 @@
 		<a href="login.me">로그인</a>
 		<br><br>
 		
-		<a href="getTodolist.do">투두리스트 바로가기</a><br><br>
+		<a href="getTodolistList.do">투두리스트 바로가기</a><br><br>
 	</div>
 
 </body>

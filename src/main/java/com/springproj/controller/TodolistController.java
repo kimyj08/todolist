@@ -35,6 +35,15 @@ public class TodolistController {
 		return "redirect:getTodolistList.do";
 	}
 	
+	@RequestMapping(value="/getTodolist.do")
+	public String getTodolist(TodolistVO todolist, Model model) {
+		TodolistVO vo  = todolistService.getService(todolist.getTd_no());
+		
+		model.addAttribute("todolist", vo); // command 객체로 이용 가능하다.
+		
+		return "getTodolist";
+	}
+	
 	// 검색 조건 목록 설정
 	@ModelAttribute("conditionMap") // key 자리
 	public Map<String, String> searchConditionMap() {
