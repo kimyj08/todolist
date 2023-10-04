@@ -18,3 +18,6 @@ NOORDER;			   /* 요청 순서대로 값을 생성할지 여부 */
 INSERT INTO TODOLIST (td_no, td_content) values (td_seq.NEXTVAL, '투두리스트 만들기');
 INSERT INTO TODOLIST (td_no, td_content) values (td_seq.NEXTVAL, '꽃다발 예약하기');
 INSERT INTO TODOLIST (td_no, td_content) values (td_seq.NEXTVAL, '식당 확인하기');
+
+ALTER TABLE TODOLIST ADD complete VARCHAR2(2) default 'N' NOT NULL;
+ALTER TABLE TODOLIST ADD user_id VARCHAR2(20);

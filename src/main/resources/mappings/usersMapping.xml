@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="Users">
+  
+  	<insert id="insertUsers" parameterType="users">
+  		<![CDATA[
+  			insert into tusers(seq, id, password, name) values(tusers_seq.NEXTVAL, #{id}, #{password}, #{name})
+  		]]>
+  	</insert>
+  	
+  	<select id="getUsers" resultType="users">
+  		<![CDATA[
+  			select * from tusers where seq = #{seq}
+  		]]>
+  	</select>
+  	
+  	<update id="updateUsers">
+  		<![CDATA[
+  			update tusers set password = #{password}, name = #{name} where seq = #{seq}
+  		]]>
+  	</update>
+  	
+  	<delete id="delestUsers">
+  		<![CDATA[
+  			delete from tusers where seq ={seq}
+  		]]>
+  	</delete>
+  
+  </mapper>
