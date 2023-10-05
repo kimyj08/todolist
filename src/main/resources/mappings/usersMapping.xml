@@ -11,6 +11,10 @@
   		]]>
   	</insert>
   	
+  	<select id="getUsersList" resultType="users">
+  		select * from tusers where 1 = 1 order by seq desc
+  	</select>
+  	
   	<select id="getUsers" resultType="users">
   		<![CDATA[
   			select * from tusers where seq = #{seq}
