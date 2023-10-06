@@ -21,7 +21,7 @@
 				<td><input type="password" name="password" value="${user.password}"/></td>
 			</tr>
 			<tr>
-				<td colspaa="2" align="center"><input type="submit" value="로그인"/></td>
+				<td colspan="2" align="center"><input type="submit" value="로그인"/></td>
 			</tr>
 		</table>
 	</form>
