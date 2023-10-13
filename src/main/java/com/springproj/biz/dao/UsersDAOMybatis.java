@@ -20,8 +20,8 @@ public class UsersDAOMybatis {
 	}
 	
 	// 목록보기(select문)
-	public UsersVO getUsers(String seq) {
-		return mybatis.selectOne("Users.getUsers", seq);
+	public UsersVO getUsers(UsersVO vo) {
+		return mybatis.selectOne("Users.getUsers", vo);
 	}
 	
 	public List<UsersVO> getUsersList(UsersVO vo) {

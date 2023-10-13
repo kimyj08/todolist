@@ -3,6 +3,8 @@ package com.springproj.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +35,45 @@ public class UsersController {
 		return "redirect:getUsersList.me";
 	}
 	
+	@GetMapping("/login.me")
+	public String loginForm(@ModelAttribute("user") UsersVO vo) {
+		return "login";
+	}
+	
+	@PostMapping("login.me")
+	public String loginProc(UsersVO users, HttpSession session) {
+		
+		if(users.getId() == null || users.getId().equals("")) {
+			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+		}
+		
+		String retVal = null;
+		
+		// 1. users의 id 존재 여부를 db에서 가져오기.
+		UsersVO vo = usersService.getService(users);
+		
+		if((vo!=null) && vo.getPassword().equals(users.getPassword())) {
+			session.setAttribute("userName", vo.getName());
+			
+			retVal = "redirct:getTodolistList.do";
+		} else {
+			retVal = "redirect:login.me";
+		}
+		return retVal;
+	}
+	
+	@RequestMapping("/logout.me")
+	public String logoutProc(HttpSession session) {
+		System.out.println("로그아웃 처리.");
+		
+		session.invalidate();
+		
+		return "redirect:login.me";
+	}
+	
 	@RequestMapping(value="/getUsers.me")
 	public String getUsers(UsersVO users, Model model) {
-		UsersVO vo = usersService.getService(users.getSeq());
+		UsersVO vo = usersService.getService(users);
 		
 		model.addAttribute("users", vo);  // command 객체로 이용 가능하다.
 		

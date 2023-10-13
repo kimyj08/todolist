@@ -10,7 +10,7 @@ public interface UsersService {
 	// 회원 등록
 	public void insertService(UsersVO vo);
 	// 회원 목록 조회
-	public UsersVO getService(String seq);
+	public UsersVO getService(UsersVO vo);
 	public List<UsersVO> getServiceList(UsersVO vo);
 	// 회원 정보 수정
 	public void updateService(UsersVO vo);

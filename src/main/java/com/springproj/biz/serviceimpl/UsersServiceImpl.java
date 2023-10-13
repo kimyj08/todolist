@@ -21,8 +21,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public UsersVO getService(String seq) {
-		UsersVO users = dao.getUsers(seq);
+	public UsersVO getService(UsersVO vo) {
+		UsersVO users = dao.getUsers(vo);
 		return users;
 	}
 
