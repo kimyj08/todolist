@@ -50,7 +50,7 @@ public class UsersController {
 		String retVal = null;
 		
 		// 1. users의 id 존재 여부를 db에서 가져오기.
-		UsersVO vo = usersService.getService(users);
+		UsersVO vo = usersService.loginService(users);
 		
 		if((vo!=null) && vo.getPassword().equals(users.getPassword())) {
 			session.setAttribute("userName", vo.getName());

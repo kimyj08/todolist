@@ -19,6 +19,12 @@ public class UsersServiceImpl implements UsersService {
 	public void insertService(UsersVO vo) {
 		dao.insertUsers(vo);
 	}
+	
+	@Override
+	public UsersVO loginService(UsersVO vo) {
+		UsersVO usersLogin = dao.loginUsers(vo);
+		return usersLogin;
+	}
 
 	@Override
 	public UsersVO getService(UsersVO vo) {

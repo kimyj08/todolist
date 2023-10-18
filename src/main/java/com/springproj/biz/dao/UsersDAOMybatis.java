@@ -19,6 +19,11 @@ public class UsersDAOMybatis {
 		mybatis.insert("Users.insertUsers", vo);
 	}
 	
+	// 로그인(select문)
+	public UsersVO loginUsers(UsersVO vo) {
+		return mybatis.selectOne("Users.loginUsers", vo);
+	}
+	
 	// 목록보기(select문)
 	public UsersVO getUsers(UsersVO vo) {
 		return mybatis.selectOne("Users.getUsers", vo);

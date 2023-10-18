@@ -9,6 +9,8 @@ public interface UsersService {
 	// CRUD 기능 수행을 위한 메서드 호출 가능.
 	// 회원 등록
 	public void insertService(UsersVO vo);
+	// 로그인
+	public UsersVO loginService(UsersVO vo);
 	// 회원 목록 조회
 	public UsersVO getService(UsersVO vo);
 	public List<UsersVO> getServiceList(UsersVO vo);
