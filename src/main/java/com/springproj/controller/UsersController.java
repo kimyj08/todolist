@@ -52,10 +52,10 @@ public class UsersController {
 		// 1. users의 id 존재 여부를 db에서 가져오기.
 		UsersVO vo = usersService.loginService(users);
 		
-		if((vo!=null) && vo.getPassword().equals(users.getPassword())) {
+		if(vo != null) {
 			session.setAttribute("userName", vo.getName());
 			
-			retVal = "redirct:getTodolistList.do";
+			retVal = "redirect:getTodolistList.do";
 		} else {
 			retVal = "redirect:login.me";
 		}
@@ -66,7 +66,13 @@ public class UsersController {
 	public String logoutProc(HttpSession session) {
 		System.out.println("로그아웃 처리.");
 		
-		session.invalidate();
+		try {
+			
+			session.invalidate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 		return "redirect:login.me";
 	}

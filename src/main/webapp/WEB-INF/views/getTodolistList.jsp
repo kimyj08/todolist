@@ -10,7 +10,7 @@
 <body>
 	<center>
 		<h1>투두 목록</h1>
-		<h3>${userName}님! 투두리스트에 오신 것을 환영합니다 :) <a href="logout.do">로그아웃</a></h3>
+		<h3>${userName}님! 투두리스트에 오신 것을 환영합니다 :) <a href="logout.me">로그아웃</a></h3>
 		
 		<!-- 검색 시작 -->
 		<form action="getTodolistList.do" method="post">
