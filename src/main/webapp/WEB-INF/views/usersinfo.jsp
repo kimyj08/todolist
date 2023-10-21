@@ -21,11 +21,15 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td align="left">${users.password}</td>
+					<td align="left">
+						<input name="password" type="text" value="${users.password}"/>
+					</td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td align="left">${users.name}</td>
+					<td align="left">
+						<input name="password" type="text" value="${users.name}"/>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
@@ -34,10 +38,13 @@
 				</tr>
 			</table>
 		</form>
+		
+		<p>아이디는 변경하실 수 없습니다.</p>
+		
 		<hr>
 		<a href="insertTodolist.do">투두 등록</a>&nbsp;&nbsp;&nbsp;
 		<a href="getTodolistList.do">투두 목록</a>&nbsp;&nbsp;&nbsp;
-		<a href="usersout.me">회원 탈퇴</a>
+		<a href="deleteUsers.me">회원 탈퇴</a>
 	</center>
 </body>
 </html>

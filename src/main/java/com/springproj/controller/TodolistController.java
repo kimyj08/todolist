@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +58,7 @@ public class TodolistController {
 	}
 	
 	@RequestMapping(value="/getTodolistList.do")
-	public String getList(TodolistVO vo, Model model) {
+	public String getList(TodolistVO vo, Model model, HttpServletRequest request) {
 		System.out.println("검색 조건: "+vo.getSearchCondition());
 		System.out.println("검색 단어: "+vo.getSearchKeyword());
 		
@@ -66,6 +69,12 @@ public class TodolistController {
 		if(vo.getSearchKeyword() == null) {
 			vo.setSearchKeyword("");
 		}
+		
+		System.out.println(vo.getUser_seq());
+		
+		//  로그인한 계정의 seq 값 세팅
+		HttpSession session = request.getSession();
+		vo.setUser_seq((String) session.getAttribute("userSeq"));
 		
 		List<TodolistVO> list = todolistService.getServiceList(vo);
 		

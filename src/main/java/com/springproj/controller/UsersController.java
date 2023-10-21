@@ -1,8 +1,11 @@
 package com.springproj.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +29,13 @@ public class UsersController {
 	
 	@GetMapping("/insertUsers.me")
 	public String insertUsers() {
-		return "insertUsers";
+		return "join";
 	}
 	
 	@PostMapping("/insertUsers.me")
 	public String insertUsers(UsersVO users) throws IOException {
 		usersService.insertService(users);
-		return "redirect:getUsersList.me";
+		return "redirect:login.me";
 	}
 	
 	@GetMapping("/login.me")
@@ -41,10 +44,25 @@ public class UsersController {
 	}
 	
 	@PostMapping("login.me")
-	public String loginProc(UsersVO users, HttpSession session) {
+	public String loginProc(UsersVO users, HttpSession session, HttpServletResponse response) throws IOException {
 		
 		if(users.getId() == null || users.getId().equals("")) {
-			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디는 반드시 입력해야 합니다.'); history.go(-1);</script>");
+			out.flush();
+			response.flushBuffer();
+			out.close();
+			// throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+		}
+		
+		if(users.getPassword() == null || users.getPassword().equals("")) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alter('비밀번호는 반드시 입력해야 합니다.'); history.go(-1);</script>");
+			out.flush();
+			response.flushBuffer();
+			out.close();
 		}
 		
 		String retVal = null;
@@ -57,6 +75,13 @@ public class UsersController {
 			
 			retVal = "redirect:getTodolistList.do";
 		} else {
+			response.setContentType("text/html; cherset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alter('입력하신 정보가 일치하지 않습니다.\n다시 로그인하여 주세요.'); history.go(-1);</script>");
+			out.flush();
+			response.flushBuffer();
+			out.close();
+			
 			retVal = "redirect:login.me";
 		}
 		return retVal;
@@ -78,12 +103,14 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value="/getUsers.me")
-	public String getUsers(UsersVO users, Model model) {
+	public String getUsers(UsersVO users, Model model, HttpServletRequest request) {
+		System.out.println(users.getSeq());
+		
 		UsersVO vo = usersService.getService(users);
 		
 		model.addAttribute("users", vo);  // command 객체로 이용 가능하다.
 		
-		return "getUsers";
+		return "usersInfo";
 	}
 	
 	@RequestMapping(value="/getUsersList.me")
@@ -108,6 +135,6 @@ public class UsersController {
 	public String deleteUsers(UsersVO users) {
 		usersService.deleteService(users.getSeq());
 		
-		return "redirect:getUsersList.me";
+		return "redirect:insertUsers.me";
 	}
 }

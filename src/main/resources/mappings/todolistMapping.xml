@@ -7,7 +7,7 @@
   
   	<insert id="insertTodolist" parameterType="todolist">
   		<![CDATA[
-  			insert into todolist(td_no, td_content) values(td_seq.NEXTVAL, #{td_content})
+  			insert into todolist(td_no, td_content, user_seq) values(td_seq.NEXTVAL, #{td_content}, #{user_seq})
   		]]>
   	</insert>
   	

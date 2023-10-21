@@ -45,7 +45,8 @@
 		</table>
 		<br>
 		
-		<a href="insertTodolist.do">투두 등록</a>
+		<a href="insertTodolist.do">투두 등록</a>&nbsp;&nbsp;&nbsp;
+		<a href="getUsers.me">내 정보</a>
 	</center>
 </body>
 </html>
