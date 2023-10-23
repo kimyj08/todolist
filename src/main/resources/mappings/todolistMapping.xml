@@ -14,11 +14,14 @@
   	<select id="getTodolistList" resultType="todolist">
   			
   			select *
-  			from todolist
+  			  from todolist t
+  				 , tusers u
   			where 1 = 1
+  			  and t.user_seq = u.seq
   			<if test="searchCondition == 'CONTENT'">
   				and td_content like '%'||#{searchKeyword}||'%'
   			</if>
+  			  and t.user_seq = ${user_seq}
   			order by td_no desc
   			
   	</select>

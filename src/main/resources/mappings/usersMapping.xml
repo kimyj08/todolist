@@ -13,7 +13,7 @@
   	
   	<select id="loginUsers" resultType="users">
   		<![CDATA[
-  			select name from tusers where id = #{id} and password = #{password}
+  			select seq, name from tusers where id = #{id} and password = #{password}
 		]]>
   	</select>
   	

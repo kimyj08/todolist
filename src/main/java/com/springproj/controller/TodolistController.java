@@ -70,11 +70,11 @@ public class TodolistController {
 			vo.setSearchKeyword("");
 		}
 		
-		System.out.println(vo.getUser_seq());
-		
 		//  로그인한 계정의 seq 값 세팅
 		HttpSession session = request.getSession();
 		vo.setUser_seq((String) session.getAttribute("userSeq"));
+		
+		System.out.println(vo.getUser_seq());
 		
 		List<TodolistVO> list = todolistService.getServiceList(vo);
 		

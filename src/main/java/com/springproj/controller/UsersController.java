@@ -72,6 +72,7 @@ public class UsersController {
 		
 		if(vo != null) {
 			session.setAttribute("userName", vo.getName());
+			session.setAttribute("userSeq", vo.getSeq());
 			
 			retVal = "redirect:getTodolistList.do";
 		} else {
@@ -104,6 +105,10 @@ public class UsersController {
 	
 	@RequestMapping(value="/getUsers.me")
 	public String getUsers(UsersVO users, Model model, HttpServletRequest request) {
+		//  로그인한 계정의 seq 값 세팅
+		HttpSession session = request.getSession();
+		users.setSeq((String) session.getAttribute("userSeq"));
+		
 		System.out.println(users.getSeq());
 		
 		UsersVO vo = usersService.getService(users);

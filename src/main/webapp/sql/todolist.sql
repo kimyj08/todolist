@@ -34,3 +34,4 @@ ALTER TABLE TODOLIST ADD CONSTRAINT FK_TUSERS_TO_TODOLIST
 
 UPDATE TODOLIST SET user_seq = 2 where td_no = 3;
 UPDATE TODOLIST SET user_seq = 1 where td_no = 1 or td_no = 2;
+UPDATE TODOLIST SET user_seq = 2 where td_no = 6;
