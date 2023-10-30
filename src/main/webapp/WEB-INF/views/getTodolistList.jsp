@@ -33,13 +33,15 @@
 		<!-- 목록 출력 -->
 		<table border="1" cellpadding="0" cellspacing="0" width="700">
 			<tr>
-				<td width="500">내용</td>
+				<td width="430">내용</td>
 				<td width="200">등록일</td>
+				<td width="70">달성여부</td>
 			</tr>
 			<c:forEach items="${todolistList}" var="todolist">
 				<tr>
 					<td align="center"><a href="getTodolist.do?td_no=${todolist.td_no}">${todolist.td_content}</a></td>
 					<td align="center">${todolist.td_date}</td>
+					<td align="center">${todolist.complete}</td>
 				</tr>
 			</c:forEach>
 		</table>
