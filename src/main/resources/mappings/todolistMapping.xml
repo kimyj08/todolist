@@ -13,7 +13,11 @@
   	
   	<select id="getTodolistList" resultType="todolist">
   			
-  			select *
+  			select t.td_no
+  				 , t.td_content
+  				 , t.td_date
+  				 , decode(t.complete, 'N', '미달성', 'Y', '달성')
+  				 , t.user_seq
   			  from todolist t
   				 , tusers u
   			where 1 = 1
@@ -27,9 +31,16 @@
   	</select>
   	
   	<select id="getTodolist" resultType="todolist">
-  		<![CDATA[
-  			select * from todolist where td_no = #{td_no}
-  		]]>
+  	
+  			select td_no,
+  				 , td_content
+  				 , td_date
+  				 , decode(complete, 'N', '미달성', 'Y', '달성')
+  				 , user_seq
+  			  from todolist
+  			 where 1 = 1
+  			   and td_no = #{td_no}
+  			 
   	</select>
   	
   	<update id="updateTodolist">

@@ -26,6 +26,10 @@
 					<td align="left">${todolist.td_date}</td>
 				</tr>
 				<tr>
+					<td>달성여부</td>
+					<td align="left">${todolist.complete}</td>
+				</tr>
+				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="내용 수정" />
 					</td>
