@@ -32,14 +32,13 @@
   	
   	<select id="getTodolist" resultType="todolist">
   	
-  			select td_no,
+  			select td_no
   				 , td_content
   				 , td_date
   				 , decode(complete, 'N', '미달성', 'Y', '달성')
   				 , user_seq
   			  from todolist
-  			 where 1 = 1
-  			   and td_no = #{td_no}
+  			 where td_no = #{td_no}
   			 
   	</select>
   	
