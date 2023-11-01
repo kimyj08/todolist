@@ -53,6 +53,7 @@ public class TodolistController {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		
 		conditionMap.put("내용", "CONTENT");
+		conditionMap.put("날짜", "DATE");
 		
 		return conditionMap; // value 자리
 	}

@@ -16,7 +16,7 @@
   			select t.td_no
   				 , t.td_content
   				 , t.td_date
-  				 , decode(t.complete, 'N', '미달성', 'Y', '달성')
+  				 , decode(t.complete, 'N', '미달성', 'Y', '달성') as complete
   				 , t.user_seq
   			  from todolist t
   				 , tusers u
@@ -24,6 +24,9 @@
   			  and t.user_seq = u.seq
   			<if test="searchCondition == 'CONTENT'">
   				and td_content like '%'||#{searchKeyword}||'%'
+  			</if>
+  			<if test="searchCondition == 'DATE'">
+  				and td_date like '%'||#{searchKeyword}||'%'
   			</if>
   			  and t.user_seq = ${user_seq}
   			order by td_no desc
@@ -35,7 +38,7 @@
   			select td_no
   				 , td_content
   				 , td_date
-  				 , decode(complete, 'N', '미달성', 'Y', '달성')
+  				 , decode(complete, 'N', '미달성', 'Y', '달성') as complete
   				 , user_seq
   			  from todolist
   			 where td_no = #{td_no}
