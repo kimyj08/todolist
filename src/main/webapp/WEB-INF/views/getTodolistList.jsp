@@ -39,7 +39,7 @@
 			</tr>
 			<c:forEach items="${todolistList}" var="todolist">
 				<tr>
-					<td align="center"><a href="getTodolist.do?td_no=${todolist.td_no}">${todolist.td_content}</a></td>
+					<td align="center"><input type="checkbox" id="complete" />&nbsp;<a href="getTodolist.do?td_no=${todolist.td_no}">${todolist.td_content}</a></td>
 					<td align="center">${todolist.td_date}</td>
 					<td align="center">${todolist.complete}</td>
 				</tr>

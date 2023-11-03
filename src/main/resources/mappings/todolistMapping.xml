@@ -51,6 +51,12 @@
   		]]>
   	</update>
   	
+  	<update id="completeTodolist">
+  		<![CDATA[
+  			update todolist set complete = 'Y' where td_no = #{td_no}
+  		]]>
+  	</update>
+  	
   	<delete id="deleteTodolist">
   		<![CDATA[
   			delete from todolist where td_no = #{td_no}
