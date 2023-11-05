@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>투두 목록</title>
+
+<script type="text/javascript">
+	function getCbValue(obj) {
+		if() {
+			
+		}
+		
+		document.getElementById('complete').value = '';
+	}
+</script>
+
 </head>
 <body>
 	<center>
@@ -39,7 +50,10 @@
 			</tr>
 			<c:forEach items="${todolistList}" var="todolist">
 				<tr>
-					<td align="center"><input type="checkbox" id="complete" />&nbsp;<a href="getTodolist.do?td_no=${todolist.td_no}">${todolist.td_content}</a></td>
+					<td align="center">
+						<input type="checkbox" id="complete" name="complete" value="" onclick="getCbValue(obj)" />&nbsp;
+						<a href="getTodolist.do?td_no=${todolist.td_no}">${todolist.td_content}</a>
+					</td>
 					<td align="center">${todolist.td_date}</td>
 					<td align="center">${todolist.complete}</td>
 				</tr>
