@@ -21,6 +21,7 @@ INSERT INTO TODOLIST (td_no, td_content) values (td_seq.NEXTVAL, '식당 확인�
 
 ALTER TABLE TODOLIST ADD complete VARCHAR2(2) default 'N' NOT NULL;
 ALTER TABLE TODOLIST ADD user_id VARCHAR2(20);
+ALTER TABLE TODOLIST ADD td_delete VARCHAR2(2) default '1';
 
 /* 칼럼명 변경 */
 ALTER TABLE TODOLIST RENAME COLUMN user_id TO user_seq;

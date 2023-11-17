@@ -29,7 +29,8 @@
   				and td_date like '%'||#{searchKeyword}||'%'
   			</if>
   			  and t.user_seq = ${user_seq}
-  			order by td_no desc
+  			  and t.td_delete not in ('0')
+  			order by t.td_no desc
   			
   	</select>
   	
@@ -59,7 +60,7 @@
   	
   	<delete id="deleteTodolist">
   		<![CDATA[
-  			delete from todolist where td_no = #{td_no}
+  			update todolist set td_delete = '0' where td_no = #{td_no}
   		]]>
   	</delete>
   

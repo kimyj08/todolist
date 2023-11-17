@@ -9,6 +9,7 @@ public class TodolistVO {
 	private Date td_date;
 	private String complete;
 	private String user_seq;
+	private String td_delete;
 	// 검색 기능 추가
 	private String searchCondition;
 	private String searchKeyword;
@@ -55,12 +56,18 @@ public class TodolistVO {
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
+	public String getTd_delete() {
+		return td_delete;
+	}
+	public void setTd_delete(String td_delete) {
+		this.td_delete = td_delete;
+	}
 	
 	@Override
 	public String toString() {
 		return "TodolistVO [td_no=" + td_no + ", td_content=" + td_content + ", td_date=" + td_date + ", complete="
-				+ complete + ", user_seq=" + user_seq + ", searchCondition=" + searchCondition + ", searchKeyword="
-				+ searchKeyword + "]";
+				+ complete + ", user_seq=" + user_seq + ", td_delete=" + td_delete + ", searchCondition="
+				+ searchCondition + ", searchKeyword=" + searchKeyword + "]";
 	}
 	
 }

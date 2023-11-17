@@ -35,7 +35,7 @@ public class TodolistDAOMybatis {
 	
 	// 글 삭제(delete문)
 	public void deleteTodolist(String td_no) {
-		mybatis.delete("Todolist.deleteTodolist", td_no);
+		mybatis.update("Todolist.deleteTodolist", td_no);
 	}
 	
 }
